@@ -19,9 +19,11 @@
   height: 100%;
   border-radius: 4px;
   background-color: var(--green);
+  transition: width 0.3s;
 }
 span.currentExperience {
   position: absolute;
   top: 12px;
   transform: translateX(-50%);
+  transition: left 0.3s;
 }
