@@ -1,5 +1,5 @@
 .container {
-  height: 100vh;
+  min-height: 100vh;
   max-width: 992px;
   margin: 0 auto;
   padding: 2.65rem 2rem;
@@ -15,4 +15,19 @@
   grid-template-columns: 1fr 1fr;
   gap: 6.25rem;
   align-content: center;
+}
+
+@media(max-width: 768px) {
+  .container section {
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container section div:first-child {
+    max-width: 414px;
+    width: 100%;
+  }
 }
