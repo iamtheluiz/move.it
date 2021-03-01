@@ -3,7 +3,7 @@
   background-color: var(--white);
   border-radius: 5px;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
-  padding: 1.5rem 2rem;
+  padding: 2rem 2rem;
 
   display: flex;
   flex-direction: column;
@@ -92,4 +92,10 @@
 }
 .challengeActive footer button:hover {
   filter: brightness(0.9);
+}
+
+@media(max-width: 768px) {
+  .challengeActive main {
+    padding: 32px 0px;
+  }
 }
