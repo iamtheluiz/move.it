@@ -32,14 +32,24 @@ interface ChallengesProviderProps {
 export const ChallengesContext = createContext({} as ChallengesContextData);
 
 export function ChallengesProvider({ children, ...rest }: ChallengesProviderProps) {
-  const [level, setLevel] = useState(rest.level ?? 1);
-  const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0);
-  const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0);
+  const [level, setLevel] = useState(1);
+  const [currentExperience, setCurrentExperience] = useState(0);
+  const [challengesCompleted, setChallengesCompleted] = useState(0);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
 
   const [activeChallenge, setActiveChallenge] = useState(null);
 
-  const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
+  const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
+
+  useEffect(() => {
+    const levelCookie = Cookies.get('level');
+    const currentExperienceCookie = Cookies.get('currentExperience');
+    const challengesCompletedCookie = Cookies.get('challengesCompleted');
+
+    setLevel(levelCookie ? Number(levelCookie) : 1);
+    setCurrentExperience(currentExperienceCookie ? Number(currentExperienceCookie) : 0);
+    setChallengesCompleted(challengesCompletedCookie ? Number(challengesCompletedCookie) : 0);
+  }, []);
 
   useEffect(() => {
     Notification.requestPermission();
